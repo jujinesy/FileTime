@@ -69,6 +69,7 @@ int main(int argc, char* argv[])
 				&access_local_time.wMinute,
 				&access_local_time.wSecond,
 				&access_local_time.wMilliseconds);
+			printf("in-");
 		}
 		else {
 			fopen_s(&fp, save + ".bak", "w+");
@@ -101,6 +102,7 @@ int main(int argc, char* argv[])
 				access_local_time.wMinute,
 				access_local_time.wSecond,
 				access_local_time.wMilliseconds);
+			printf("ex-");
 		}
 		fclose(fp);
 		
@@ -115,7 +117,10 @@ int main(int argc, char* argv[])
 		//CTimeSpan tmSpan_interval = tmCurrentTime - FileTime;
 		//// 현재 시간으로 부터 얼마나 지났는 알수 잇다. CTimeSpan변수 값으로 원하는 걸 얻을수 있겠죵?
 		CloseHandle(h_File);
+	} else{
+		printf("F");
+		exit(0);
 	}
-	printf("Success!");
+	printf("S");
 	return 0;
 }
