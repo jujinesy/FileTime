@@ -35,8 +35,9 @@ int main(int argc, char* argv[])
 		write_local_time = write_system_time;
 		access_local_time = access_system_time;
 
+		CString save = ((CString)argv[1]).Mid(((CString)argv[1]).ReverseFind('\\') + 1);
 		FILE *fp;
-		fopen_s(&fp, (CString)argv[1] + ".bak", "r");
+		fopen_s(&fp, save + ".bak", "r");
 		if (fp != NULL)
 		{
 			fscanf_s(fp, "%hu %hu %hu %hu %hu %hu %hu %hu",
@@ -70,7 +71,7 @@ int main(int argc, char* argv[])
 				&access_local_time.wMilliseconds);
 		}
 		else {
-			fopen_s(&fp, (CString)argv[1] + ".bak", "w+");
+			fopen_s(&fp, save + ".bak", "w+");
 			fprintf(fp, "%hu %hu %hu %hu %hu %hu %hu %hu\n",
 				create_local_time.wYear,
 				create_local_time.wMonth,
